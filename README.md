@@ -10,6 +10,10 @@ Run NVIDIA's **Nemotron-Labs-TwoTower-30B-A3B** — a block-wise autoregressive 
 <img alt="License" src="https://img.shields.io/badge/license-NVIDIA%20Open%20Model-lightgrey">
 </p>
 
+<p align="center">
+<img src="assets/diffusion-demo.png" alt="Block-wise mask-diffusion generation on Apple Silicon" width="760">
+</p>
+
 This repo bundles the MLX modeling code + copy-paste examples for two deliverables converted from the [source model](https://huggingface.co/nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16):
 
 | | Runs in | What it is |
