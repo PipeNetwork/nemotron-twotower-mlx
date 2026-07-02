@@ -128,6 +128,30 @@ Diffusion compounds quantization error across denoising steps, so a naive unifor
 
 The MLX conversion was checked against NVIDIA's reference implementation running on an NVIDIA GB10 (CUDA). Greedy decoding matched **token-for-token — 120/120 tokens (100%), 5/5 top-1** across the test prompts (e.g. both produce *"George Washington. He was elected in 1789 and served two terms until 1797."*). The AR tower is the shared backbone the diffusion denoiser also uses.
 
+## 📊 Benchmarks
+
+Measured on **Apple M3 Ultra (512 GB unified memory)**, MLX 0.31 — steady-state (post-warmup). Peak RAM is the unified-memory high-water mark during generation.
+
+**AR / context tower** — 128-token single-stream generation:
+
+| Quant | Size | Generation | Peak RAM |
+|---|---|---|---|
+| 4-bit | 17 GB | **16.1 tok/s** | 17.9 GB |
+| 6-bit | 24 GB | 13.2 tok/s | 25.7 GB |
+| 8-bit | 31 GB | 13.3 tok/s | 33.6 GB |
+| bf16  | 59 GB | 13.3 tok/s | 63.2 GB |
+
+**TwoTower diffusion** — 64 new tokens, block size 16, ≤16 steps/block:
+
+| Quant | Size | Throughput | Denoiser evals | Peak RAM |
+|---|---|---|---|---|
+| 4-bit | 34 GB | **3.8 tok/s** | 64 | 37.1 GB |
+| 6-bit | 48 GB | 3.3 tok/s | 64 | 52.5 GB |
+| 8-bit | 63 GB | 3.4 tok/s | 64 | 67.9 GB |
+| bf16  | 118 GB | 1.5 tok/s | 39 | 136.9 GB |
+
+Diffusion runs `steps_per_block` denoiser passes per block, so it's slower per token than the AR tower — lower `--steps-per-block` trades quality for speed. Higher-precision builds tend to converge in fewer denoiser evaluations, but each pass moves more memory.
+
 ## 📁 Project structure
 
 ```
