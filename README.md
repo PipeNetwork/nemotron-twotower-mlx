@@ -3,6 +3,7 @@
 Run NVIDIA's **Nemotron-Labs-TwoTower-30B-A3B** — a block-wise autoregressive **diffusion** language model — natively on Apple Silicon with [MLX](https://github.com/ml-explore/mlx).
 
 <p>
+<a href="https://huggingface.co/collections/pipenetwork/nemotron-twotower-mlx-6a45c0abd46638ebacc6b7c6"><img alt="Hugging Face Models" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-ffcc00"></a>
 <img alt="MLX" src="https://img.shields.io/badge/MLX-Apple%20Silicon-black">
 <img alt="Model" src="https://img.shields.io/badge/model-Nemotron%20TwoTower%2030B--A3B-76B900">
 <img alt="Arch" src="https://img.shields.io/badge/arch-Mamba2%20%2B%20Attn%20%2B%20MoE-blue">
@@ -180,7 +181,7 @@ nemotron-twotower-mlx/
 ## 📚 Resources
 
 - Source model: [nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16](https://huggingface.co/nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16)
-- MLX models: [AR tower](https://huggingface.co/pipenetwork/Nemotron-3-Nano-30B-A3B-context-mlx-4bit) · [TwoTower diffusion](https://huggingface.co/pipenetwork/Nemotron-Labs-TwoTower-30B-A3B-mlx-4bit)
+- MLX models: [🤗 collection (all 8 builds)](https://huggingface.co/collections/pipenetwork/nemotron-twotower-mlx-6a45c0abd46638ebacc6b7c6) · [AR tower](https://huggingface.co/pipenetwork/Nemotron-3-Nano-30B-A3B-context-mlx-4bit) · [TwoTower diffusion](https://huggingface.co/pipenetwork/Nemotron-Labs-TwoTower-30B-A3B-mlx-4bit)
 - [MLX](https://github.com/ml-explore/mlx) · [mlx-lm](https://github.com/ml-explore/mlx-lm)
 
 ## 📝 License
