@@ -276,6 +276,7 @@ class TwoTowerModel(nn.Module):
     def generate_mask_diffusion(
         self, input_ids, max_new_tokens=128, block_size=16, steps_per_block=16,
         mask_token_id=3, confidence_threshold=0.9, eos_token_id=None, verbose=False,
+        step_callback=None,
     ):
         assert max_new_tokens % block_size == 0
         B = input_ids.shape[0]
@@ -286,6 +287,8 @@ class TwoTowerModel(nn.Module):
 
         for blk in range(num_blocks):
             xt = mx.full((B, block_size), mask_token_id, dtype=mx.int32)
+            if step_callback is not None:
+                step_callback(blk, -1, xt, context_ids)
             for step in range(steps_per_block):
                 is_masked = (xt == mask_token_id)
                 n_masked = int(is_masked.sum().item())
@@ -328,6 +331,8 @@ class TwoTowerModel(nn.Module):
                     new_xt.append(row)
                 xt = mx.stack(new_xt)
                 mx.eval(xt)
+                if step_callback is not None:
+                    step_callback(blk, step, xt, context_ids)
 
             context_ids = mx.concatenate([context_ids, xt], axis=1)
             caches = self.extend_context_cache(xt, caches)
