@@ -61,7 +61,7 @@ Not sure? Start with **AR 4-bit** (smallest, runs anywhere) or **diffusion 4-bit
 - RAM per the table above
 
 ```bash
-git clone https://github.com/davidrhodus/nemotron-twotower-mlx.git
+git clone https://github.com/PipeNetwork/nemotron-twotower-mlx.git
 cd nemotron-twotower-mlx
 pip install -r requirements.txt        # mlx, mlx-lm, transformers
 pip install "huggingface_hub[hf_transfer]"   # faster downloads (optional)
