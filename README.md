@@ -11,7 +11,8 @@ Run NVIDIA's **Nemotron-Labs-TwoTower-30B-A3B** — a block-wise autoregressive 
 </p>
 
 <p align="center">
-<img src="assets/diffusion-demo.png" alt="Block-wise mask-diffusion generation on Apple Silicon" width="760">
+<img src="assets/diffusion.gif" alt="Block-wise mask-diffusion generation on Apple Silicon" width="760">
+<br><em>Tokens resolve out of order as each block is denoised — not left-to-right like a normal LM.</em>
 </p>
 
 This repo bundles the MLX modeling code + copy-paste examples for two deliverables converted from the [source model](https://huggingface.co/nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16):
@@ -102,6 +103,10 @@ python run_twotower_mlx.py --model ./tt-4bit \
   --prompt "The capital of France is" --max-new-tokens 64 \
   --block-size 16 --steps-per-block 16 --mask-token-id 3
 ```
+
+<p align="center">
+<img src="assets/diffusion-demo.png" alt="Sample diffusion run output" width="720">
+</p>
 
 ```python
 import sys; sys.path.insert(0, ".")
