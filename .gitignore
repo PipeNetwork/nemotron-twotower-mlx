@@ -1,0 +1,12 @@
+# downloaded model weights
+*.safetensors
+*.safetensors.index.json
+tokenizer.json
+models/
+tt-*/
+*-mlx-*/
+# python
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
